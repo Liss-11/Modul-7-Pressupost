@@ -1,5 +1,6 @@
+import { CalculaTotalService } from './../calcula-total.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,40 +12,57 @@ export class HomeComponent implements OnInit {
 
 
   total: number;
+  
 
-
-  constructor() { }
+  constructor(private TotalServicio: CalculaTotalService) { }
 
   
   webControl = new FormControl('');
   seoControl =  new FormControl('');
-  campanyaControl=  new FormControl('');
-
+  campanyaControl = new FormControl('');
+  
  
-
   ngOnInit(): void {
     this.total = 0;
+
+  
+    //Cuando se abre el subformulario - gestiona el Total
+
+    //aumento en funcion de las PAGINAS
+    this.TotalServicio.aumento1$.subscribe(aumento => {
+
+      this.total = this.TotalServicio.totalWeb(aumento, this.seoControl.value, this.campanyaControl.value);
+      
+    });
+
+    //aumento en funcion de los idiomas
+    this.TotalServicio.aumento2$.subscribe(aumento => {
+      
+      this.total = this.TotalServicio.totalWeb(aumento, this.seoControl.value, this.campanyaControl.value);
+
+    });
+
+                      //pasamos al Service los parámetros de los checkboxes
+    //PÁGINA WEB
+
+    this.webControl.valueChanges.subscribe(change => {
+      this.total = this.TotalServicio.calculaTotal(500, change, 'web');
+    });
+
+    //CONSULTORIO SEO
+    this.seoControl.valueChanges.subscribe(change => { 
+      this.total = this.TotalServicio.calculaTotal(300, change, 'seo');
+    });
+
+    //CAMPANYA GOOGLE
+     this.campanyaControl.valueChanges.subscribe(change => {
+       this.total = this.TotalServicio.calculaTotal(200, change, 'campanya');
+     });
+ 
+  }  
     
-  }
-
-  totalReturn(e: any): void {
-    let actual = Number(e.target.value);
-    if (e.target.checked) {
-      
-      this.total += actual;
-
-    } else if (this.total > 0) {
-      this.total -= actual;
-    } 
-      
-  }
-
 }
 
-/* dentro de webControl - que será - FormGroup
-  pages: new FromControl (''.  Validators.pattern('[0]')) 
   
-  en el HTML <input [class.in-invalid]="webControl.get('pages')
-  .toches && webControl.get('pages').invalid"
 
-*/
+  

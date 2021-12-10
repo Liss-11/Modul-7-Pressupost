@@ -1,0 +1,22 @@
+
+<div class='container p-4 mb-3 rounded border border-3 border-dark'>
+    <form [formGroup]="formWeb">
+        <div class="mb-3 row">
+            <label for="paginas" class="col-sm-7 col-form-label">Número de páginas</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="paginas" formControlName="paginas">
+            </div>
+        </div>
+        <!-- <div *ngIf="formWeb.get('paginas').hasError('')">Has excedido el número de páginas</div>
+        <div *ngIf="formWeb.get('paginas').hasError('')">Se pueden introducir solo valores numéricos</div> -->
+        <div class="row">
+            <label for="idiomas" class="col-sm-7 col-form-label">Número de idiomas</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="idiomas"  formControlName="idiomas">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+//pasar la info del aumento del panel al servicio y que calcule el total y lo mande al Home

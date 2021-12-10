@@ -3,25 +3,28 @@
 
         <p class="mb-3">¿Qué quieres hacer?</p>
 
-        <div class="form-check">
+        <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value=500 id="web" 
-            (change)="totalReturn($event)" [formControl]="webControl">
+             [formControl]="webControl">
             <label class="form-check-label" for="web">
-                Una pàgina web (500€))
+                Una página web (500€))
             </label>
         </div>
-        <div class="form-check">
+        <app-panell></app-panell>
+        <!-- <app-panell (valuePages)="returnPages($event)" (valueIdiomas)="returnIdiomas($event)"></app-panell> -->
+        <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value=300 id="seo" 
-                (change)="totalReturn($event)" [formControl]="seoControl">
+                 [formControl]="seoControl">
             <label class="form-check-label" for="seo">
                 Una consultoria SEO (300€)
             </label>
         </div>
-        <div class="form-check">
+        
+        <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value=200 id="campanya"
-                (change)="totalReturn($event)" [formControl]="campanyaControl">
+                 [formControl]="campanyaControl">
             <label class="form-check-label" for="campanya">
-                Una campanya de Google Ads (200€)
+                Una campaña de Google Ads (200€)
             </label>
         </div>
         <div>Preu: <p class="d-inline-block mt-3">{{total}}€</p></div>
