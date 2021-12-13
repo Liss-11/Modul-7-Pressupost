@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl} from '@angular/forms';
 import { CalculaTotalService } from '../calcula-total.service';
-import { PanellComponent } from '../panell/panell.component';
 
 @Component({
   selector: 'app-input',
@@ -14,9 +13,7 @@ export class InputComponent implements OnInit {
   entrada = new FormControl('1');
   paginas: number;
   idiomas: number;
-  
-  
-  
+
   @Input() nombre: string;
   
 
@@ -28,9 +25,6 @@ export class InputComponent implements OnInit {
     this.paginas = 1;
     this.idiomas = 1;
     
-
-     
-
     this.onChanges();
 
   }
@@ -53,9 +47,6 @@ export class InputComponent implements OnInit {
       
     });
 
-    
-   
-    
   }
 
   sumar() {
@@ -64,9 +55,7 @@ export class InputComponent implements OnInit {
       this.entrada.patchValue(this.paginas+1);
       
     } else if (this.nombre === "idiomas") {
-
-      this.entrada.patchValue(this.idiomas+1);
-      
+      this.entrada.patchValue(this.idiomas+1); 
     }
   }
 

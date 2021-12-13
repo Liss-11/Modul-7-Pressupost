@@ -8,13 +8,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
 import { InputComponent } from './input/input.component';
+import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PanellComponent,
-    InputComponent
+    InputComponent,
+    PantallaInicioComponent
   ],
   imports: [
     BrowserModule,

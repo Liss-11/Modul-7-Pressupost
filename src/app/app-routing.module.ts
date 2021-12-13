@@ -1,9 +1,12 @@
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }
+  {path: '', component: PantallaInicioComponent},
+  { path: 'home', component: HomeComponent }
   
 ];
 

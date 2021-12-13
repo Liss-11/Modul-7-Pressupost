@@ -1,14 +1,7 @@
-import { InputComponent } from './../input/input.component';
-import { CalculaTotalService } from './../calcula-total.service';
-import { AfterViewInit, Component, Directive, Input, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { iif } from 'rxjs';
 
-//Ejercicio 3
-/* @Directive({selector: 'app-input'})
-export class InputComponent  {
-  @Input() id!: string;
-} */
+import { CalculaTotalService } from './../calcula-total.service';
+import { Component, OnInit} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -38,48 +31,22 @@ export class PanellComponent implements OnInit {
   ngOnInit(): void { };
 
     
- /*  change(nombre:string): void {
-
-    this.message = nombre;
-    console.log(nombre)
-
-  } */
-  
-
-
-  //Ejercicio 3
-
+ 
 
 }
 
-  //Ejeercicio 2
-
   
-
-
-  /* constructor(
-    private totalServicio: CalculaTotalService
-  ) { } */
-
- 
-
-
-
-  
-
 
   //Ejercicio 2
 
     /* this.paginas = 1;
     this.idiomas = 1;
     this.aumentar = this.totalServicio.aumento(this.paginas, this.idiomas);
-    
-    
+
     this.onChanges();
 
   }
 
-  
   total: number;
   aumentar: number;
   paginas: number = parseInt(this.formWeb.controls['paginas'].value);
