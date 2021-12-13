@@ -14,6 +14,8 @@ export class CalculaTotalService {
 
   total: number = 0;
   aumentar: number = 30;
+  paginas: number = 1;
+  idiomas: number = 1;
  
 
   constructor() { }
@@ -39,6 +41,22 @@ export class CalculaTotalService {
 
     return this.total;
     
+  }
+  //Recibe parámetros del componente INPUT y manda la respuesta directamente al Home
+  recibeParámetro(nombre: string, valor: number):void {
+
+    if (nombre === "paginas") {
+
+      this.paginas = valor;
+
+      this.aumentar = this.aumento(this.paginas, this.idiomas);
+      this.aumento1$.emit(this.aumentar);
+    
+    } else if (nombre === "idiomas")
+      this.idiomas = valor;
+
+      this.aumentar = this.aumento(this.paginas, this.idiomas);
+      this.aumento2$.emit(this.aumentar);
   }
 
   

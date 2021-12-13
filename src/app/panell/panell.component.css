@@ -1,0 +1,26 @@
+.formulario {
+  border-radius: 20px;
+  border: 3px solid black;
+  margin-top: -2em;
+  max-width: auto;
+  min-width: auto;
+}
+.animacion {
+  animation-name: form;
+  animation-duration: 0.5s;
+}
+
+@keyframes form {
+  0% {
+    transform-origin: left top;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+label {
+  display: flex;
+  align-content: flex-end;
+  margin-right: -5%;
+}

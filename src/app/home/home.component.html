@@ -3,15 +3,18 @@
 
         <p class="mb-3">¿Qué quieres hacer?</p>
 
-        <div class="form-check mb-3">
+        <div class="form-check mb-5">
             <input class="form-check-input" type="checkbox" value=500 id="web" 
              [formControl]="webControl">
             <label class="form-check-label" for="web">
                 Una página web (500€))
             </label>
         </div>
-        <app-panell></app-panell>
-        <!-- <app-panell (valuePages)="returnPages($event)" (valueIdiomas)="returnIdiomas($event)"></app-panell> -->
+        <!-- <div *ngIf="webControl.value == true"> -->
+            <app-panell *ngIf="webControl.value"></app-panell>
+        
+       
+
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value=300 id="seo" 
                  [formControl]="seoControl">
