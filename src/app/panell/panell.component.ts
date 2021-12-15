@@ -1,7 +1,8 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';;
 
-import { CalculaTotalService } from './../calcula-total.service';
+/* import { NgbModule} from  */
 import { Component, OnInit} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -14,27 +15,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   
 export class PanellComponent implements OnInit {
 
-  formWeb = new FormGroup({
-    paginas: new FormControl('1', Validators.maxLength(3)),
-    idiomas: new FormControl('1', Validators.maxLength(2))
-
-  });
   
+  constructor(NgbModal: ) {}
+    
   message1: string = "paginas";
   message2: string = "idiomas";
   
-  constructor(
-    private totalServicio: CalculaTotalService
-  ) { }
+  ngOnInit(): void {
+   
 
-
-  ngOnInit(): void { };
-
-    
+  };
  
 
 }
-
   
 
   //Ejercicio 2
@@ -50,14 +43,16 @@ export class PanellComponent implements OnInit {
   total: number;
   aumentar: number;
   paginas: number = parseInt(this.formWeb.controls['paginas'].value);
-  idiomas: number = parseInt(this.formWeb.controls['idiomas'].value);
+  idiomas: number = parseInt(this.formWeb.controls['idiomas'].value);*/
 
   //Llamo el servicio para obtener el precio de la web en funcion de paginas e idiomas
 
 
   //Prueva Final
 
-  onChanges(): void {
+
+
+  /*onChanges(): void {
     this.formWeb.controls['paginas'].valueChanges.subscribe(val => {
       this.paginas = parseInt(val);
       if (val !== '') {

@@ -21,9 +21,16 @@ button {
 button:active {
   background-color: orchid;
 }
+button:disabled {
+  background-color: gray;
+}
 .label {
   align-content: space-between;
   min-width: fit-content;
+}
+.error {
+  color: red;
+  font-size: 12px;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -31,4 +38,12 @@ input[type="number"]::-webkit-outer-spin-button {
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+.special {
+  border: 2px solid red;
+  border-radius: 5px;
+}
+.special:hover {
+  border: 2px solid red;
+  border-radius: 5px;
 }

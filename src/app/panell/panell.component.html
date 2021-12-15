@@ -1,6 +1,6 @@
 
 <div class='container p-4 mb-3 formulario animacion'>
-    <form [formGroup]="formWeb">
+    <form >
         <div class="mb-3 row">
             <label for="paginas" class="col-md-7 col-form-label">Número de páginas</label>
                <app-input class="col-md-5" id="paginas"  [nombre]="message1" ></app-input> 
@@ -10,10 +10,11 @@
         <div class="row">
             <label for="idiomas" class="col-sm-7 col-form-label">Número de idiomas</label>
             <div class="col-sm-5">
-                <app-input class="col-md-5" id="idiomas"  [nombre]="message2" #idiomas ></app-input>
+                <app-input class="col-md-5" id="idiomas" [nombre]="message2" ></app-input>
             </div>
         </div>
     </form>
+    
 </div>
 
 

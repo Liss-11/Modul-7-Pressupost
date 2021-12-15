@@ -1,9 +1,20 @@
 
-<div class="d-flex label">
-    <button class="button" type="button" (click)="sumar()" >+</button>
-        <input  class="casilla" type="number" step="1" maxlength="3" [formControl]= "entrada" value="1">
-    <button class="button" type="button" (click)="restar()" >-</button>
+<div class=" row" >
+   <div class="d-flex label col">
+    <button class="button" type="button" (click)="sumar()" [disabled]="mas" >+</button>
+        
+    <input class="casilla" type="number" [formControl]="entrada" step="1" [class.special]="entrada.invalid" >    
+    <button class="button" type="button" (click)="restar()" [disabled]="menos" >-</button>
+    </div>
+    <div class="col">
+
+    <span class="error" *ngIf="entrada.invalid">Porfavor introduce un número de 1 al 25</span>
+    </div>
+      
 </div>
+
+<!-- pattern="^[0-9]+"
+            step="1" maxlength="2" value="1" -->
 
 
 
