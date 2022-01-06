@@ -10,6 +10,7 @@ export class CalculaTotalService {
   idiomas$ = new EventEmitter<string>();
   aumento1$ = new EventEmitter<number>();
   aumento2$ = new EventEmitter<number>();
+  
 
 
 
@@ -65,28 +66,11 @@ export class CalculaTotalService {
   }
 
   
-  /* calculaTotal(total: number, change: boolean, nombre:string) {
-
-    if (change) {
-
-      nombre === 'web'? this.total += (total + this.aumentar): this.total += total;
-
-      
-    } else {
-     
-      nombre === 'web'? this.total -= (total + this.aumentar): this.total -= total;
-      }
-    
-    
-
-    return this.total;
-    
-  } */
   calculaTotal(nombre: string, select: boolean) {
 
-    if (nombre === 'webControl') {
+    if (nombre === 'Página Web') {
       select ? (this.total += 530) : (this.total -= 530);
-    } else if (nombre === 'seoControl') {
+    } else if (nombre === 'Consultoria SEO') {
       select ? (this.total += 300) : (this.total -= 300);
     } else {
       select ? (this.total += 200) : (this.total -= 200);
@@ -99,7 +83,7 @@ export class CalculaTotalService {
   nuevoPresupuesto(presupuesto: Presupuesto) {
     
     this.presupuestos.push(presupuesto);
-    console.log('presupuesto', this.presupuestos);
+    
   }
 
   

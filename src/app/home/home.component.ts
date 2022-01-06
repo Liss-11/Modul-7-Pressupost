@@ -1,8 +1,9 @@
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalculaTotalService } from './../calcula-total.service';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators, CheckboxControlValueAccessor } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Presupuesto } from '../presupuesto.modelo';
+
 
 export interface Choices {
   description: string,
@@ -19,24 +20,23 @@ export class HomeComponent implements OnInit {
 
   total: number;
   panell: boolean;
+  seo: boolean;
+  campanya: boolean;
 
   formulario: FormGroup;
+  presupuestos: Presupuesto[] = [];
+  
   
 
   constructor(private TotalServicio: CalculaTotalService, public modal: NgbModal, private fb: FormBuilder) { }
 
-  public checks: Array<Choices> = [
-  {description: 'Una página web (500€))', value: 'webControl'},
-  {description: "Una consultoria SEO (300€)", value: 'seoControl'},
-  {description: "Una campaña de Google Ads (200€)", value: 'campanyaControl'}
-];
 
   ngOnInit(): void {
 
     /* Formulario con FormBuilder */
 
     this.formulario = this.fb.group({
-    myChoices: new FormArray([]),
+    myChoices: new FormArray([], Validators.required),
     nombre: ['', [Validators.required, Validators.minLength(2)] ],
     nomPresupuesto: ['', [Validators.required, Validators.minLength(2)]]
     })
@@ -44,20 +44,24 @@ export class HomeComponent implements OnInit {
     
 
     this.total = 0;
+    this.seo = false;
+    this.campanya = false;
+
 
     //Cuando se abre el subformulario - gestiona el Total
 
     //aumento en funcion de las PAGINAS
     this.TotalServicio.aumento1$.subscribe(aumento => {
 
-      this.total = this.TotalServicio.totalWeb(aumento, this.formulario.get('seoControl')?.value , this.formulario.get('campanyaControl')?.value);
+      this.total = this.TotalServicio.totalWeb(aumento, this.seo, this.campanya);
+      
       
     });
 
     //aumento en funcion de los idiomas
     this.TotalServicio.aumento2$.subscribe(aumento => {
       
-      this.total = this.TotalServicio.totalWeb(aumento, this.formulario.get('seoControl')?.value, this.formulario.get('campanyaControl')?.value);
+      this.total = this.TotalServicio.totalWeb(aumento, this.seo, this.campanya);
 
     });
   
@@ -75,16 +79,32 @@ export class HomeComponent implements OnInit {
     // Añadimos nuevo FormControl al FormArray (MyChoices)
     formArray.push(new FormControl(event.target.value));
     selecionado = true;
-    if (event.target.value === 'webControl') {
+    //abrir panel web
+    if (event.target.value === 'Página Web') {
       this.panell = true;
+    }
+    //Para pasar parámetro al total de la suma WEB
+    if (event.target.value === 'Consultoria SEO') {
+      this.seo = true;
+    }
+     if (event.target.value === 'Campaña de Google Ads') {
+      this.campanya = true;
     }
 
   }else{
     // Detectar los elementos descelecionados
     let i: number = 0;
     selecionado = false
-    if (event.target.value === 'webControl') {
+    //Cerrar el panel de la WEB
+    if (event.target.value === 'Página Web') {
       this.panell = false;
+    }
+      //Para pasar parámetro al total de la suma WEB
+     if (event.target.value === 'Consultoria SEO') {
+      this.seo = false;
+     }
+    if (event.target.value === 'Campaña de Google Ads') {
+      this.campanya = false;
     }
 
     formArray.controls.forEach(ctrl => {
@@ -99,8 +119,7 @@ export class HomeComponent implements OnInit {
   }
     
     this.total = this.TotalServicio.calculaTotal(event.target.value, selecionado);
-    
-    
+  
   }
 
 /*   Mandamos Datos al Servicio para crear presupuesto y añadirlo al array
@@ -110,8 +129,9 @@ export class HomeComponent implements OnInit {
 
     let nuevo: Presupuesto = new Presupuesto(formulario.nombre, formulario.nomPresupuesto, this.formulario.get('myChoices')?.value, this.total);
     this.TotalServicio.nuevoPresupuesto(nuevo);
+
+    this.presupuestos = this.TotalServicio.presupuestos;
     
-    console.log(nuevo);
     
   }
   

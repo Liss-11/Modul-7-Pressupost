@@ -1,12 +1,12 @@
-<div class="container d-flex justify-content-center p-4">
-    <div class="w-50">
+<div class="container row d-flex justify-content-center p-4">
+    <div class="w-50 col-6 m-3">
 
         <p class="mb-3">¿Qué quieres hacer?</p>
 
         <form novalidate (ngSubmit)="addPost(formulario.value)" [formGroup]="formulario">
 
             <div class="form-check mb-5">
-                <input class="form-check-input" type="checkbox" value="webControl" (change)="onCheckChange($event)">
+                <input class="form-check-input" type="checkbox" value="Página Web" (change)="onCheckChange($event)">
                 <label class="form-check-label" for="web">
                     Una página web (500€))
                 </label>
@@ -16,45 +16,18 @@
                 <app-panell *ngIf="panell"></app-panell>
 
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value='seoControl'(change)="onCheckChange($event)">
+                <input class="form-check-input" type="checkbox" value='Consultoria SEO'(change)="onCheckChange($event)">
                 <label class="form-check-label" for="seo">
                     Una consultoria SEO (300€)
                 </label>
             </div>
             
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value='campanyaControl' (change)="onCheckChange($event)">
+                <input class="form-check-input" type="checkbox" value='Campaña de Google Ads' (change)="onCheckChange($event)">
                 <label class="form-check-label" for="campanya">
                     Una campaña de Google Ads (200€)
                 </label>
             </div>
-
-            <!-- <div class="form-check mb-5">
-                <input class="form-check-input" type="checkbox" value=500 id="web" 
-                formControlName ="webControl">
-                <label class="form-check-label" for="web">
-                    Una página web (500€))
-                </label>
-            </div>
-
-            
-                <app-panell *ngIf="formulario.get('webControl')?.value"></app-panell>
-
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value=300 id="seo" 
-                    formControlName="seoControl">
-                <label class="form-check-label" for="seo">
-                    Una consultoria SEO (300€)
-                </label>
-            </div>
-            
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value=200 id="campanya"
-                    formControlName="campanyaControl">
-                <label class="form-check-label" for="campanya">
-                    Una campaña de Google Ads (200€)
-                </label>
-            </div> -->
 
             <div class="m-4 w-md-50">
                 <label class="form-label mb-3" for="nombre">
@@ -79,44 +52,12 @@
         
     </div>
 
-</div>
+    <!-- Lista de presupuestos -->
 
-<!-- <div class="form-check mb-5">
-    <input class="form-check-input" type="checkbox" value=500 id="web" [formControl]="webControl">
-    <label class="form-check-label" for="web">
-        Una página web (500€))
-    </label>
-</div>
-
-<app-panell *ngIf="webControl.value"></app-panell>
-
-<div class="form-check mb-3">
-    <input class="form-check-input" type="checkbox" value=300 id="seo" [formControl]="seoControl">
-    <label class="form-check-label" for="seo">
-        Una consultoria SEO (300€)
-    </label>
-</div>
-
-<div class="form-check mb-3">
-    <input class="form-check-input" type="checkbox" value=200 id="campanya" [formControl]="campanyaControl">
-    <label class="form-check-label" for="campanya">
-        Una campaña de Google Ads (200€)
-    </label>
-</div>
-
-<div class="m-4 w-md-50">
-    <label class="form-label mb-3" for="nombre">
-        Nombre Cliente
-    </label>
-    <input class="form-control" type="text" placeholder="Introduce tu nombre" id="nombre">
+    <app-pressupost-list *ngIf="presupuestos.length > 0" class="col-5 m-2"></app-pressupost-list>
+    
 
 </div>
-<div class="m-4 w-md-50">
-    <label class="form-label mb-3" for="presupuesto">
-        Nombre Presupuesto
-    </label>
-    <input class="form-control" type="text" placeholder="Asigna nombre al presupuesto" id="presupuesto">
-</div>
-<div>Precio: <p class="d-inline-block mt-3">{{total}}€</p>
-</div> -->
+
+
 

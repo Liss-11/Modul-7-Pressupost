@@ -1,0 +1,22 @@
+
+
+<ul>
+    <li *ngFor="let presupuesto of presupuestos" class="listado marco mb-2">
+        <span>Nombre Cliente: {{ presupuesto.nombre }}</span>
+    <br>
+        <span>Nombre Presupuesto: {{ presupuesto.nomPresupuesto }}</span>
+    <br>
+        <span>Servicios Contratados:</span>
+        <ul class="mt-2">
+            <li *ngFor="let servicio of presupuesto.servicios" class="listado">
+                <span>{{ servicio }}</span>
+            </li>
+        </ul>
+        
+    <br>
+        <span>Precio: {{ presupuesto.precio }} €</span>
+    <br>
+        <span>Data: {{ presupuesto.data }}</span>
+    </li>
+</ul>
+

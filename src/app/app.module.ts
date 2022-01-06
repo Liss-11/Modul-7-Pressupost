@@ -11,6 +11,7 @@ import { PanellComponent } from './panell/panell.component';
 import { InputComponent } from './input/input.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PressupostListComponent } from './pressupost-list/pressupost-list.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     PanellComponent,
     InputComponent,
-    PantallaInicioComponent
+    PantallaInicioComponent,
+    PressupostListComponent
   ],
   imports: [
     BrowserModule,

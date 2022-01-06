@@ -1,21 +1,25 @@
 export interface PresupuestoInterfaz {
     nombre: String;
     nomPresupuesto: String;
-    servicio: string | string[];
+    servicios: string[];
     precio: number;
-    data: Date;
+    data: string;
 
 }
 
 export class Presupuesto implements PresupuestoInterfaz {
 
-    data: Date;
+    fecha: Date;
+    data: string;
+
     
     constructor(public nombre: String, public nomPresupuesto: String,
-        public servicio: string | string[], public precio: number) {
-        this.data = new Date(Date.now());
+        public servicios: string[], public precio: number) {
+        this.fecha = new Date(Date.now());
+        this.data = this.fecha.getDate() + "." + (this.fecha.getMonth()+1) + "." + this.fecha.getFullYear();
         
-        }
+    }
+    
 }
 
 
