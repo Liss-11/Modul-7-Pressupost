@@ -31,9 +31,6 @@ export class InputComponent implements OnInit {
     this.menos = true;
     this.mas = false;
 
-    console.log(this.entrada.errors)
-  
-
     this.onChanges(); 
 
   }
@@ -49,12 +46,9 @@ export class InputComponent implements OnInit {
           this.paginas = change;
           this.totalServicio.recibeParámetro(this.nombre, change);
 
-          
-
         } else if (this.nombre === "idiomas") {
 
           this.idiomas = change;
-          
 
           this.totalServicio.recibeParámetro(this.nombre, change);
         }
@@ -65,8 +59,6 @@ export class InputComponent implements OnInit {
       this.entrada.value >= 25 ? this.mas = true : this.mas = false;
         
     });
-      
-   
 
   }
 
@@ -106,8 +98,7 @@ export class InputComponent implements OnInit {
     if (this.entrada.value === 0) {
       this.menos = true;
       }
-    
-    
+
   }
 
 }

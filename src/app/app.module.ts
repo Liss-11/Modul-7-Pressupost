@@ -1,4 +1,4 @@
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { CalculaTotalService } from './calcula-total.service';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { PanellComponent } from './panell/panell.component';
 import { InputComponent } from './input/input.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.compo
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule
+    
   ],
   providers: [
     CalculaTotalService

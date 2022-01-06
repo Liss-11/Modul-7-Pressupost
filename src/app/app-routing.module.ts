@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 
+
 const routes: Routes = [
   {path: '', component: PantallaInicioComponent},
   {path: 'home', component: HomeComponent }

@@ -1,12 +1,13 @@
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';;
+import { NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 
-/* import { NgbModule} from  */
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
+
 
 
 
 @Component({
   selector: 'app-panell',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './panell.component.html',
   styleUrls: ['./panell.component.css']
 })
@@ -16,18 +17,23 @@ import { Component, OnInit} from '@angular/core';
 export class PanellComponent implements OnInit {
 
   
-  constructor(NgbModal: ) {}
+  constructor(public modal:NgbModal) {}
     
   message1: string = "paginas";
   message2: string = "idiomas";
+
   
   ngOnInit(): void {
-   
 
   };
- 
+
+  abrirModal(content:TemplateRef<string>) {
+    this.modal.open(content, { centered: true, modalDialogClass: 'modali', size: 'xl'});
+  }
 
 }
+
+
   
 
   //Ejercicio 2

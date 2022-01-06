@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Presupuesto } from './presupuesto.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class CalculaTotalService {
  
 
   constructor() { }
+
+  //listado de presupuestos
+
+  presupuestos: Presupuesto[] = [];
 
   //calcula el precio del TOTAL en funcion del n de páginas y de idiomas, del opcion web
 
@@ -60,7 +65,7 @@ export class CalculaTotalService {
   }
 
   
-  calculaTotal(total: number, change: boolean, nombre:string) {
+  /* calculaTotal(total: number, change: boolean, nombre:string) {
 
     if (change) {
 
@@ -76,6 +81,25 @@ export class CalculaTotalService {
 
     return this.total;
     
+  } */
+  calculaTotal(nombre: string, select: boolean) {
+
+    if (nombre === 'webControl') {
+      select ? (this.total += 530) : (this.total -= 530);
+    } else if (nombre === 'seoControl') {
+      select ? (this.total += 300) : (this.total -= 300);
+    } else {
+      select ? (this.total += 200) : (this.total -= 200);
+    }
+ 
+    return this.total;
+ 
+  }
+
+  nuevoPresupuesto(presupuesto: Presupuesto) {
+    
+    this.presupuestos.push(presupuesto);
+    console.log('presupuesto', this.presupuestos);
   }
 
   

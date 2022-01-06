@@ -1,10 +1,10 @@
 
 <div class=" row" >
    <div class="d-flex label col">
-    <button class="button" type="button" (click)="sumar()" [disabled]="mas" >+</button>
+    <button type="button" (click)="sumar()" [disabled]="mas" >+</button>
         
     <input class="casilla" type="number" [formControl]="entrada" step="1" [class.special]="entrada.invalid" >    
-    <button class="button" type="button" (click)="restar()" [disabled]="menos" >-</button>
+    <button type="button" (click)="restar()" [disabled]="menos" >-</button>
     </div>
     <div class="col">
 

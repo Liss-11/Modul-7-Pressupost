@@ -3,35 +3,120 @@
 
         <p class="mb-3">¿Qué quieres hacer?</p>
 
-        <div class="form-check mb-5">
-            <input class="form-check-input" type="checkbox" value=500 id="web" 
-             [formControl]="webControl">
-            <label class="form-check-label" for="web">
-                Una página web (500€))
-            </label>
-        </div>
-        <!-- <div *ngIf="webControl.value == true"> -->
-            <app-panell *ngIf="webControl.value"></app-panell>
-        
-       
+        <form novalidate (ngSubmit)="addPost(formulario.value)" [formGroup]="formulario">
 
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value=300 id="seo" 
-                 [formControl]="seoControl">
-            <label class="form-check-label" for="seo">
-                Una consultoria SEO (300€)
-            </label>
-        </div>
-        
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value=200 id="campanya"
-                 [formControl]="campanyaControl">
-            <label class="form-check-label" for="campanya">
-                Una campaña de Google Ads (200€)
-            </label>
-        </div>
-        <div>Precio: <p class="d-inline-block mt-3">{{total}}€</p></div>
+            <div class="form-check mb-5">
+                <input class="form-check-input" type="checkbox" value="webControl" (change)="onCheckChange($event)">
+                <label class="form-check-label" for="web">
+                    Una página web (500€))
+                </label>
+            </div>
+
+            
+                <app-panell *ngIf="panell"></app-panell>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value='seoControl'(change)="onCheckChange($event)">
+                <label class="form-check-label" for="seo">
+                    Una consultoria SEO (300€)
+                </label>
+            </div>
+            
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value='campanyaControl' (change)="onCheckChange($event)">
+                <label class="form-check-label" for="campanya">
+                    Una campaña de Google Ads (200€)
+                </label>
+            </div>
+
+            <!-- <div class="form-check mb-5">
+                <input class="form-check-input" type="checkbox" value=500 id="web" 
+                formControlName ="webControl">
+                <label class="form-check-label" for="web">
+                    Una página web (500€))
+                </label>
+            </div>
+
+            
+                <app-panell *ngIf="formulario.get('webControl')?.value"></app-panell>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value=300 id="seo" 
+                    formControlName="seoControl">
+                <label class="form-check-label" for="seo">
+                    Una consultoria SEO (300€)
+                </label>
+            </div>
+            
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value=200 id="campanya"
+                    formControlName="campanyaControl">
+                <label class="form-check-label" for="campanya">
+                    Una campaña de Google Ads (200€)
+                </label>
+            </div> -->
+
+            <div class="m-4 w-md-50">
+                <label class="form-label mb-3" for="nombre">
+                    Nombre Cliente
+                </label>
+                <input class="form-control" type="text" placeholder="Introduce el nombre del Cliente" id="nombre" 
+                formControlName="nombre">
+                
+            </div>
+            <div class="m-4 w-md-50">
+                <label class="form-label mb-3" for="nomPresupuesto">
+                    Nombre Presupuesto
+                </label>
+                <input class="form-control" type="text" placeholder="Asigna nombre al presupuesto" id="nomPresupuesto"
+                formControlName="nomPresupuesto">
+            </div>
+            <div>Precio: <p class="d-inline-block mt-3 mb-5">{{total}}€</p></div>
+            <div>
+                <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary btn-small mt-4">Guardar Presupuesto</button>
+            </div>
+        </form>
         
     </div>
+
 </div>
+
+<!-- <div class="form-check mb-5">
+    <input class="form-check-input" type="checkbox" value=500 id="web" [formControl]="webControl">
+    <label class="form-check-label" for="web">
+        Una página web (500€))
+    </label>
+</div>
+
+<app-panell *ngIf="webControl.value"></app-panell>
+
+<div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" value=300 id="seo" [formControl]="seoControl">
+    <label class="form-check-label" for="seo">
+        Una consultoria SEO (300€)
+    </label>
+</div>
+
+<div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" value=200 id="campanya" [formControl]="campanyaControl">
+    <label class="form-check-label" for="campanya">
+        Una campaña de Google Ads (200€)
+    </label>
+</div>
+
+<div class="m-4 w-md-50">
+    <label class="form-label mb-3" for="nombre">
+        Nombre Cliente
+    </label>
+    <input class="form-control" type="text" placeholder="Introduce tu nombre" id="nombre">
+
+</div>
+<div class="m-4 w-md-50">
+    <label class="form-label mb-3" for="presupuesto">
+        Nombre Presupuesto
+    </label>
+    <input class="form-control" type="text" placeholder="Asigna nombre al presupuesto" id="presupuesto">
+</div>
+<div>Precio: <p class="d-inline-block mt-3">{{total}}€</p>
+</div> -->
 
