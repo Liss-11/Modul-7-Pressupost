@@ -1,5 +1,7 @@
 
+
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { CalculaTotalService } from '../calcula-total.service';
 import { Presupuesto } from '../presupuesto.modelo';
 
@@ -12,6 +14,10 @@ export class PressupostListComponent implements OnInit {
 
   constructor(private TotalServicio: CalculaTotalService) { }
 
+  buscar = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]);
+
+  
+
   presupuestos: Presupuesto[] = [];
   servicios: string[] = [];
   original: Presupuesto[] = [];
@@ -21,7 +27,6 @@ export class PressupostListComponent implements OnInit {
 
 
   ngOnInit(): void {
-
   
     this.original = this.TotalServicio.presupuestos;
     this.presupuestos = this.original;
@@ -42,9 +47,21 @@ export class PressupostListComponent implements OnInit {
       }
 
     });
-      
+
+    
     
 
+  }
+
+  get busca() { return this.buscar.value };
+  
+
+  comparar(value: string) {
+
+    let comparacion: Presupuesto[] = this.original;
+    
+    this.presupuestos = comparacion.filter(presup => presup.nomPresupuesto === value);
+      
   }
 
   //Orden INICIAL

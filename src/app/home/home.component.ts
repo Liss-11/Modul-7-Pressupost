@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
 
     this.formulario = this.fb.group({
     myChoices: new FormArray([], Validators.required),
-    nombre: ['', [Validators.required, Validators.minLength(2)] ],
-    nomPresupuesto: ['', [Validators.required, Validators.minLength(2)]]
+    nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)] ],
+    nomPresupuesto: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]]
     })
 
     

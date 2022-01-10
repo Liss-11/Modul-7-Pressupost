@@ -1,5 +1,8 @@
 
 <div class="cointainer-fluid">
+
+    <!-- Botons per ordenar el llistat -->
+
 <div class="container d-flex justify-content-center m-2">
     <button class="btn btn-small btn-succes btn-outline-info m-2 texto" (click)="alfabetico()" [class.active]="alfabeto">
         Ordenar <br>
@@ -15,7 +18,22 @@
         Inicial
     </button>
 </div>
-<div class="cointainer ">
+
+    <!-- Botons per ordenar el llistat -->
+
+<div class="cointainer m-5">
+    <label for="buscar" class="col mb-2">Busca el pressupost per el seu NOM:</label>
+    <input id="buscar" class="col-md-8" type="text" [formControl]="buscar">
+    <!--(click)="comparar(busca) -->
+    <button class="btn btn-primary btn-sm col-md-3 m-2 mt-1" type="submit" [disabled]="buscar.invalid" (click)="comparar(busca)" >Buscar</button>
+    <div *ngIf="buscar.errors?.['minlength'] || buscar.errors?.['maxlength'] ">El nombre puede contener entre 2 y 20 caracteres</div>
+
+
+</div>
+
+    <!-- Renderitzat del llistat -->
+
+<div class="cointainer">
     <ul >
         <li *ngFor="let presupuesto of presupuestos" class="listado marco mb-2">
             <span>Nombre Cliente: {{ presupuesto.nombre }}</span>
