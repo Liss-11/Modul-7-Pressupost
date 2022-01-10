@@ -27,26 +27,57 @@
                 <label class="form-check-label" for="campanya">
                     Una campaña de Google Ads (200€)
                 </label>
+                
             </div>
+            
+            <!-- Nombre del Cliente -->
 
             <div class="m-4 w-md-50">
                 <label class="form-label mb-3" for="nombre">
                     Nombre Cliente
                 </label>
                 <input class="form-control" type="text" placeholder="Introduce el nombre del Cliente" id="nombre" 
-                formControlName="nombre">
+                formControlName="nombre" [class.special]="nombre?.touched && nombre?.invalid"  required>
+                
+                <!-- Mensajes de error -->
+
+                <div *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)" class="error m-3">
+                      
+                    <div *ngIf="nombre?.errors?.['required']" class="error">
+                        El nombre del Cliente es obligatorio para guardar el Presupuesto.
+                    </div>
+                    <div *ngIf="nombre?.errors?.['minlength']">
+                        El nombre debe contener un mínimo de 2 caracteres.
+                    </div>
+                </div>
+                
                 
             </div>
+
+                                                                <!-- Nombre del Presupuesto -->
+
             <div class="m-4 w-md-50">
                 <label class="form-label mb-3" for="nomPresupuesto">
                     Nombre Presupuesto
                 </label>
                 <input class="form-control" type="text" placeholder="Asigna nombre al presupuesto" id="nomPresupuesto"
-                formControlName="nomPresupuesto">
+                formControlName="nomPresupuesto" [class.special]="nomPresupuesto?.touched && nomPresupuesto?.invalid" required>
+                
+                <!-- Mensajes de error -->
+                
+                <div *ngIf="nomPresupuesto?.invalid && (nomPresupuesto?.dirty || nomPresupuesto?.touched)" class="error m-3">
+                    <div *ngIf="nomPresupuesto?.errors?.['required']" class="error">
+                        El NOMBRE del Presupuesto es obligatorio para guardar el Presupuesto.
+                    </div>
+                    <div *ngIf="nomPresupuesto?.errors?.['minlength']">
+                        El nombre debe contener un mínimo de 2 caracteres.
+                    </div>
+                </div>
+
             </div>
             <div>Precio: <p class="d-inline-block mt-3 mb-5">{{total}}€</p></div>
             <div>
-                <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary btn-small mt-4">Guardar Presupuesto</button>
+                <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary btn-small mt-4" >Guardar Presupuesto</button>
             </div>
         </form>
         
@@ -54,7 +85,7 @@
 
     <!-- Lista de presupuestos -->
 
-    <app-pressupost-list *ngIf="presupuestos.length > 0" class="col-5 m-2"></app-pressupost-list>
+    <app-pressupost-list *ngIf="presupuestos.length > 0" class="col-5 m-3"></app-pressupost-list>
     
 
 </div>

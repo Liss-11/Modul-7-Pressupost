@@ -1,1 +1,12 @@
-
+.error {
+  color: red;
+  font-size: 12px;
+}
+.special {
+  border: 2px solid red;
+  border-radius: 5px;
+}
+.special:hover {
+  border: 1px solid gray;
+  border-radius: 5px;
+}

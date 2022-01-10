@@ -10,6 +10,7 @@ export class CalculaTotalService {
   idiomas$ = new EventEmitter<string>();
   aumento1$ = new EventEmitter<number>();
   aumento2$ = new EventEmitter<number>();
+  original$ = new EventEmitter < Presupuesto[]>();
   
 
 
@@ -83,6 +84,8 @@ export class CalculaTotalService {
   nuevoPresupuesto(presupuesto: Presupuesto) {
     
     this.presupuestos.push(presupuesto);
+
+    this.original$.emit(this.presupuestos);
     
   }
 

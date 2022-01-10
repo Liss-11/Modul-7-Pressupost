@@ -1,22 +1,40 @@
 
+<div class="cointainer-fluid">
+<div class="container d-flex justify-content-center m-2">
+    <button class="btn btn-small btn-succes btn-outline-info m-2 texto" (click)="alfabetico()" [class.active]="alfabeto">
+        Ordenar <br>
+        Alfabéticamente
+    </button>
+    <button class="btn btn-small btn-succes btn-outline-info m-2 texto" (click)="porData()" [class.active]="pordata">
+        Ordenar por <br>
+        Data
 
-<ul>
-    <li *ngFor="let presupuesto of presupuestos" class="listado marco mb-2">
-        <span>Nombre Cliente: {{ presupuesto.nombre }}</span>
-    <br>
-        <span>Nombre Presupuesto: {{ presupuesto.nomPresupuesto }}</span>
-    <br>
-        <span>Servicios Contratados:</span>
-        <ul class="mt-2">
-            <li *ngFor="let servicio of presupuesto.servicios" class="listado">
-                <span>{{ servicio }}</span>
-            </li>
-        </ul>
-        
-    <br>
-        <span>Precio: {{ presupuesto.precio }} €</span>
-    <br>
-        <span>Data: {{ presupuesto.data }}</span>
-    </li>
-</ul>
+    </button>
+    <button class="btn btn-small btn-succes btn-outline-info m-2 texto" (click)="incial()" [class.active]="origin">
+        Orden <br>
+        Inicial
+    </button>
+</div>
+<div class="cointainer ">
+    <ul >
+        <li *ngFor="let presupuesto of presupuestos" class="listado marco mb-2">
+            <span>Nombre Cliente: {{ presupuesto.nombre }}</span>
+        <br>
+            <span>Nombre Presupuesto: {{ presupuesto.nomPresupuesto }}</span>
+        <br>
+            <span>Servicios Contratados:</span>
+            <ul class="mt-2">
+                <li *ngFor="let servicio of presupuesto.servicios" class="listado">
+                    <span>{{ servicio }}</span>
+                </li>
+            </ul>
+            
+        <br>
+            <span>Precio: {{ presupuesto.precio }} €</span>
+        <br>
+            <span>Data: {{ presupuesto.data }}</span>
+        </li>
+    </ul>
+</div>
+</div>
 

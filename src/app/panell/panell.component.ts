@@ -7,7 +7,7 @@ import { Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core'
 
 @Component({
   selector: 'app-panell',
-  encapsulation: ViewEncapsulation.None,
+  /* encapsulation: ViewEncapsulation.None, */
   templateUrl: './panell.component.html',
   styleUrls: ['./panell.component.css']
 })
@@ -28,7 +28,8 @@ export class PanellComponent implements OnInit {
   };
 
   abrirModal(content:TemplateRef<string>) {
-    this.modal.open(content, { centered: true, modalDialogClass: 'modali', size: 'xl'});
+    this.modal.open(content, { centered: true, size: 'xl' });
+    
   }
 
 }

@@ -1,6 +1,6 @@
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalculaTotalService } from './../calcula-total.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit} from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Presupuesto } from '../presupuesto.modelo';
 
@@ -16,6 +16,8 @@ export interface Choices {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+ 
 
 
   total: number;
@@ -40,6 +42,8 @@ export class HomeComponent implements OnInit {
     nombre: ['', [Validators.required, Validators.minLength(2)] ],
     nomPresupuesto: ['', [Validators.required, Validators.minLength(2)]]
     })
+
+    
     
     
 
@@ -67,6 +71,14 @@ export class HomeComponent implements OnInit {
   
  
   }
+
+  //Getters para las Validaciones
+
+  get nombre() { return this.formulario.get('nombre'); };
+  get nomPresupuesto() { return this.formulario.get('nomPresupuesto'); };
+
+
+
 
   /* Array de checkboxes y envio al servicio de los Datos de los mismos */
 
@@ -131,10 +143,13 @@ export class HomeComponent implements OnInit {
     this.TotalServicio.nuevoPresupuesto(nuevo);
 
     this.presupuestos = this.TotalServicio.presupuestos;
+
     
+
     
   }
   
+
   
     
 }

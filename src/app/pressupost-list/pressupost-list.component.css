@@ -5,3 +5,16 @@
   border: 1px solid black;
   padding: 10px;
 }
+button.texto {
+  font-size: 0.7em;
+  color: black;
+  font-weight: bold;
+  background-color: hsl(186, 100%, 93%);
+  width: 30%;
+  min-width: fit-content;
+  margin-right: 1em;
+}
+button.active {
+  background-color: hsl(262, 82%, 89%);
+  border: 1px sold purple;
+}
