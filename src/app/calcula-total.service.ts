@@ -88,6 +88,17 @@ export class CalculaTotalService {
     this.original$.emit(this.presupuestos);
     
   }
+  pag() {
+
+    return this.paginas;
+ 
+  }
+  idiom() {
+
+    return this.idiomas;
+    
+  }
+
 
   
 

@@ -6,6 +6,7 @@ import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.compo
 
 const routes: Routes = [
   {path: '', component: PantallaInicioComponent},
+  /* {path: 'home', component: HomeComponent } */
   {path: 'home', component: HomeComponent }
   
 ];
