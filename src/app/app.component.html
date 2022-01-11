@@ -9,7 +9,9 @@
             <a class="nav-link" routerLink="" routerLinkActive="active" >Inicio</a> 
         </li>
         <li class="navbar-item m-2">
-            <a class="nav-link" routerLink="/home"  routerLinkActive="active">Home</a> 
+            <a class="nav-link" [routerLink]="['/home']" 
+            [queryParams]="{paginaWeb: 'false', campaniaSeo: 'false', campaniaAds: 'false', nPaginas: 1, nIdiomas: 1}"
+            routerLinkActive="active">Home</a> 
         </li>
     </ul>
 </nav>

@@ -1,14 +1,13 @@
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalculaTotalService } from './../calcula-total.service';
-import { Component, EventEmitter, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Presupuesto } from '../presupuesto.modelo';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
-export interface Choices {
-  description: string,
-  value: string
-}
+
+
 
 @Component({
   selector: 'app-home',
@@ -17,23 +16,31 @@ export interface Choices {
 })
 export class HomeComponent implements OnInit {
 
+/* TOTAL */
  
-
-
   total: number;
+
+/* Parámetros para la URL */
+
   panell: boolean;
   seo: boolean;
   campanya: boolean;
+  paginas: number =1;
+  idiomas: string;
+  origin: ActivatedRoute;
 
   formulario: FormGroup;
   presupuestos: Presupuesto[] = [];
+
   
   
 
-  constructor(private TotalServicio: CalculaTotalService, public modal: NgbModal, private fb: FormBuilder) { }
-
-
+  constructor(private TotalServicio: CalculaTotalService, public modal: NgbModal, private fb: FormBuilder,
+    private route: ActivatedRoute, private router: Router) { }
+  
+  
   ngOnInit(): void {
+
 
     /* Formulario con FormBuilder */
 
@@ -42,10 +49,6 @@ export class HomeComponent implements OnInit {
     nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)] ],
     nomPresupuesto: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]]
     })
-
-    
-    
-    
 
     this.total = 0;
     this.seo = false;
@@ -57,6 +60,9 @@ export class HomeComponent implements OnInit {
     //aumento en funcion de las PAGINAS
     this.TotalServicio.aumento1$.subscribe(aumento => {
 
+      
+      this.paginas = aumento;
+
       this.total = this.TotalServicio.totalWeb(aumento, this.seo, this.campanya);
       
       
@@ -64,6 +70,7 @@ export class HomeComponent implements OnInit {
 
     //aumento en funcion de los idiomas
     this.TotalServicio.aumento2$.subscribe(aumento => {
+      
       
       this.total = this.TotalServicio.totalWeb(aumento, this.seo, this.campanya);
 
@@ -76,7 +83,6 @@ export class HomeComponent implements OnInit {
 
   get nombre() { return this.formulario.get('nombre'); };
   get nomPresupuesto() { return this.formulario.get('nomPresupuesto'); };
-
 
 
 
@@ -94,6 +100,7 @@ export class HomeComponent implements OnInit {
     //abrir panel web
     if (event.target.value === 'Página Web') {
       this.panell = true;
+     
     }
     //Para pasar parámetro al total de la suma WEB
     if (event.target.value === 'Consultoria SEO') {
@@ -110,6 +117,7 @@ export class HomeComponent implements OnInit {
     //Cerrar el panel de la WEB
     if (event.target.value === 'Página Web') {
       this.panell = false;
+      
     }
       //Para pasar parámetro al total de la suma WEB
      if (event.target.value === 'Consultoria SEO') {
@@ -131,7 +139,19 @@ export class HomeComponent implements OnInit {
   }
     
     this.total = this.TotalServicio.calculaTotal(event.target.value, selecionado);
-  
+   
+    this.router.navigate(
+        [],
+        {
+          relativeTo: this.route,
+          queryParams: {
+            paginaWeb: this.panell, campaniaSeo: this.seo, campaniaAds: this.campanya
+            
+          },
+          queryParamsHandling: "merge"
+      });
+    
+    
   }
 
 /*   Mandamos Datos al Servicio para crear presupuesto y añadirlo al array

@@ -1,13 +1,13 @@
-import { NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
-import { Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, TemplateRef} from '@angular/core';
+
 
 
 
 
 @Component({
   selector: 'app-panell',
-  /* encapsulation: ViewEncapsulation.None, */
   templateUrl: './panell.component.html',
   styleUrls: ['./panell.component.css']
 })
@@ -16,7 +16,7 @@ import { Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core'
   
 export class PanellComponent implements OnInit {
 
-  
+
   constructor(public modal:NgbModal) {}
     
   message1: string = "paginas";
@@ -25,7 +25,10 @@ export class PanellComponent implements OnInit {
   
   ngOnInit(): void {
 
+    
   };
+
+  
 
   abrirModal(content:TemplateRef<string>) {
     this.modal.open(content, { centered: true, size: 'xl' });

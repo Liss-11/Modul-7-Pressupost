@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl,Validators} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CalculaTotalService } from '../calcula-total.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class InputComponent implements OnInit {
   @Input() nombre: string;
 
 
-  constructor(private totalServicio: CalculaTotalService) { }
+  constructor(private totalServicio: CalculaTotalService, private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -45,13 +46,33 @@ export class InputComponent implements OnInit {
 
           this.paginas = change;
           this.totalServicio.recibeParámetro(this.nombre, change);
+          
+          this.router.navigate(
+        [],
+        {
+          relativeTo: this.route,
+          queryParams: {
+            nPaginas: this.paginas},
+          queryParamsHandling: "merge"
+      });
 
         } else if (this.nombre === "idiomas") {
 
           this.idiomas = change;
 
+          this.router.navigate(
+        [],
+        {
+          relativeTo: this.route,
+          queryParams: {
+            nIdiomas: this.idiomas},
+          queryParamsHandling: "merge"
+      });
+          
+
           this.totalServicio.recibeParámetro(this.nombre, change);
         }
+
       }
     
       //Bloqueo Botones
